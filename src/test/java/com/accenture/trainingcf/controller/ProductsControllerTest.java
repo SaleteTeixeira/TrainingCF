@@ -49,7 +49,7 @@ public class ProductsControllerTest {
 		ProductsDTO productsTO = new ProductsDTO();
 		productsTO.setName("Product Test");
 		productsTO.setManufacturer("MAnufacturerTest");
-		productsTO.setBasePrice(1.1);
+		productsTO.setBasePrice(1.15);
 		productsTO.setSalesPrice(2.2);
 		productsTO.setQuantity(2);
 		productsTO.setValidFrom("2020-10-30");
