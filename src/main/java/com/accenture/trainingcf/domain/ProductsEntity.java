@@ -27,13 +27,13 @@ public class ProductsEntity {
 	private String manufacturer;
 	
 	@Column(name = "\"QUANTITY\"")
-	private int quantity;
+	private Integer quantity;
 	
 	@Column(name = "\"SALESPRICE\"")
-	private float salesPrice;
+	private Double salesPrice;
 	
 	@Column(name = "\"BASEPRICE\"")
-	private float basePrice;
+	private Double basePrice;
 	
 	@Column(name = "\"VALIDTO\"")
 	private LocalDateTime validTo;
@@ -71,22 +71,22 @@ public class ProductsEntity {
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public float getSalesPrice() {
+	public Double getSalesPrice() {
 		return salesPrice;
 	}
-	public void setSalesPrice(float salesPrice) {
+	public void setSalesPrice(Double salesPrice) {
 		this.salesPrice = salesPrice;
 	}
-	public float getBasePrice() {
+	public Double getBasePrice() {
 		return basePrice;
 	}
-	public void setBasePrice(float basePrice) {
+	public void setBasePrice(Double basePrice) {
 		this.basePrice = basePrice;
 	}
 	public LocalDateTime getValidTo(){

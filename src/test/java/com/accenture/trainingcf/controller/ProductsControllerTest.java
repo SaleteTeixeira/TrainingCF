@@ -27,6 +27,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.accenture.trainingcf.dto.ProductsDTO;
+import com.accenture.trainingcf.controller.ProductsController;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -48,8 +49,8 @@ public class ProductsControllerTest {
 		ProductsDTO productsTO = new ProductsDTO();
 		productsTO.setName("Product Test");
 		productsTO.setManufacturer("MAnufacturerTest");
-		productsTO.setBasePrice(new Float(1.1));
-		productsTO.setSalesPrice(new Float(2.2));
+		productsTO.setBasePrice(1.1);
+		productsTO.setSalesPrice(2.2);
 		productsTO.setQuantity(2);
 		productsTO.setValidFrom("2020-10-30");
 		productsTO.setValidTo("2020-11-30");

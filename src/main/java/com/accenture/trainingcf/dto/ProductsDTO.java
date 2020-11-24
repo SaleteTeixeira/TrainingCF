@@ -5,9 +5,9 @@ public class ProductsDTO {
 	private String id;
 	private String name;
 	private String manufacturer;
-	private int quantity;
-	private float salesPrice;
-	private float basePrice;
+	private Integer quantity;
+	private Double salesPrice;
+	private Double basePrice;
 	private String validTo;
 	private String validFrom;
 	private String createdAt;
@@ -33,22 +33,22 @@ public class ProductsDTO {
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public float getSalesPrice() {
+	public Double getSalesPrice() {
 		return salesPrice;
 	}
-	public void setSalesPrice(float salesPrice) {
+	public void setSalesPrice(Double salesPrice) {
 		this.salesPrice = salesPrice;
 	}
-	public float getBasePrice() {
+	public Double getBasePrice() {
 		return basePrice;
 	}
-	public void setBasePrice(float basePrice) {
+	public void setBasePrice(Double basePrice) {
 		this.basePrice = basePrice;
 	}
 	public String getValidTo(){
