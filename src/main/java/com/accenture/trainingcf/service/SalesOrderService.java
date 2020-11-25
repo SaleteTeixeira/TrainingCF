@@ -24,6 +24,7 @@ public class SalesOrderService {
 		
 	@Autowired
 	SalesOrderRepository repSO;
+	@Autowired
 	SalesOrderItemRepository repSOI;
 	
 	@Autowired
@@ -65,14 +66,21 @@ public class SalesOrderService {
 			salesOrderE.setCreatedAt(LocalDateTime.now());
 			salesOrderE.setCreatedBy("app");
 		}
-		else{
-			salesOrderE.setModifiedAt(LocalDateTime.now());
-			salesOrderE.setModifiedBy("app");
-		}
+
+		salesOrderE.setModifiedAt(LocalDateTime.now());
+		salesOrderE.setModifiedBy("app");
 		
 		SalesOrderEntity savedEntity = repSO.saveAndFlush(salesOrderE);
 		salesOrderE.getItems().stream().forEach(item -> {
 			item.setSalesOrder(savedEntity);
+			
+			if(Strings.isEmpty(salesOrder.getId())){
+				item.setCreatedAt(LocalDateTime.now());
+				item.setCreatedBy("app");
+			}
+			item.setModifiedAt(LocalDateTime.now());
+			item.setModifiedBy("app");
+			
 			repSOI.save(item);
 			}
 		);
@@ -82,13 +90,19 @@ public class SalesOrderService {
 	}
 	
 	public boolean deleteSalesOrder(String id){
-		boolean so = repSO.existsById(id); 
+		Optional<SalesOrderEntity> result = repSO.findById(id);
+		boolean present = result.isPresent();
 		
-		if(so){
-			repSO.deleteById(id);
+		if(present){
+			SalesOrderEntity so = result.get();
+			so.getItems().stream().forEach(item -> {
+				repSOI.delete(item);
+			});
+			
+			repSO.delete(so);
 		}
 		
-		return so;
+		return present;
 	}
 
 	public boolean deleteSalesOrderItem(){

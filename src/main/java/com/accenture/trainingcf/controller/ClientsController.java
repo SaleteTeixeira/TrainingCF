@@ -27,22 +27,22 @@ public class ClientsController {
 	ClientsService service;
 	
 	@GetMapping("")
-	public List<ClientsDTO> findAll(@RequestParam(name="keyword", required=false) String keyword){
+	public List<ClientsDTO> findAll(@RequestParam(name="keyword", required=false) String keyword, @AuthenticationPrincipal Token token){
 		return service.findAll(keyword);
 	}
 	
 	@GetMapping("{clientId}")
-	public ClientsDTO findById(@PathVariable("clientId") String id){
+	public ClientsDTO findById(@PathVariable("clientId") String id, @AuthenticationPrincipal Token token){
 		return service.findById(id);
 	}
 	
 	@PostMapping(value = "")
-	public ClientsDTO createClient(@RequestBody ClientsDTO client){
+	public ClientsDTO createClient(@RequestBody ClientsDTO client, @AuthenticationPrincipal Token token){
 		return service.saveClient(client);
 	}
 	
 	@PutMapping("{clientId}")
-	public ClientsDTO updateClient(@PathVariable("clientId") String id, @RequestBody ClientsDTO client){
+	public ClientsDTO updateClient(@PathVariable("clientId") String id, @RequestBody ClientsDTO client, @AuthenticationPrincipal Token token){
 		if(!id.equals(client.getId())) {
 			return new ClientsDTO();
 		}
@@ -50,7 +50,7 @@ public class ClientsController {
 	}
 	
 	@DeleteMapping("{clientId}")
-	public String deleteClient(@PathVariable("clientId") String id){
+	public String deleteClient(@PathVariable("clientId") String id, @AuthenticationPrincipal Token token){
 		return Boolean.toString(service.deleteClient(id));
 	}
 }

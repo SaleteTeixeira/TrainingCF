@@ -27,23 +27,23 @@ public class SalesOrderController {
 	SalesOrderService service;
 
 	@GetMapping("")
-	public List<SalesOrderDTO> findAll(@RequestParam(name="keyword", required=false) String keyword){
+	public List<SalesOrderDTO> findAll(@RequestParam(name="keyword", required=false) String keyword, @AuthenticationPrincipal Token token){
 		
 		return service.findAll(keyword);
 	}
 	
 	@GetMapping("{salesOrderId}")
-	public SalesOrderDTO findById(@PathVariable("salesOrderId") String id){
+	public SalesOrderDTO findById(@PathVariable("salesOrderId") String id, @AuthenticationPrincipal Token token){
 		return service.findById(id);
 	}
 	
 	@PostMapping(value = "")
-	public SalesOrderDTO createSalesOrder(@RequestBody SalesOrderDTO salesOrder){
+	public SalesOrderDTO createSalesOrder(@RequestBody SalesOrderDTO salesOrder, @AuthenticationPrincipal Token token){
 		return service.saveSalesOrder(salesOrder);
 	}
 	
 	@PutMapping("{salesOrderId}")
-	public SalesOrderDTO updateSalesOrder(@PathVariable("salesOrderId") String id, @RequestBody SalesOrderDTO salesOrder){
+	public SalesOrderDTO updateSalesOrder(@PathVariable("salesOrderId") String id, @RequestBody SalesOrderDTO salesOrder, @AuthenticationPrincipal Token token){
 		if(!id.equals(salesOrder.getId())) {
 			return new SalesOrderDTO();
 		}
@@ -51,7 +51,7 @@ public class SalesOrderController {
 	}
 	
 	@DeleteMapping("{salesOrderId}")
-	public String deleteSalesOrder(@PathVariable("salesOrderId") String id){
+	public String deleteSalesOrder(@PathVariable("salesOrderId") String id, @AuthenticationPrincipal Token token){
 		return Boolean.toString(service.deleteSalesOrder(id));
 	}
 }

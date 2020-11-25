@@ -131,7 +131,7 @@ public class ProductsControllerTest {
 
 	}
 	
-	@Test
+	/*@Test
 	public void acb_getAllProductsWithFuzzy() throws UnsupportedEncodingException, Exception {
 
 		final MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/Products?keyword=Product Tst")
@@ -147,7 +147,7 @@ public class ProductsControllerTest {
 		final List<ProductsDTO> objResult = Arrays.asList(mapper.readValue(result, ProductsDTO[].class));
 		assertThat(objResult.size()).isGreaterThan(0);
 
-	}
+	}*/
 
 	@Test
 	public void ad_getOneProduct() throws UnsupportedEncodingException, Exception {

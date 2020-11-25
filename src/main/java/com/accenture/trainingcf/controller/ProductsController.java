@@ -26,22 +26,22 @@ public class ProductsController {
 	ProductsService service;
 	
 	@GetMapping("")
-	public List<ProductsDTO> findAll(@RequestParam(value="keyword", required=false) String keyword){
+	public List<ProductsDTO> findAll(@RequestParam(value="keyword", required=false) String keyword, @AuthenticationPrincipal Token token){
 		return service.findAll(keyword);
 	}
 	
 	@GetMapping("{productId}")
-	public ProductsDTO findById(@PathVariable("productId") String id){
+	public ProductsDTO findById(@PathVariable("productId") String id, @AuthenticationPrincipal Token token){
 		return service.findById(id);
 	}
 	
 	@PostMapping(value = "")
-	public ProductsDTO createProduct(@RequestBody ProductsDTO product){
+	public ProductsDTO createProduct(@RequestBody ProductsDTO product, @AuthenticationPrincipal Token token){
 		return service.saveProduct(product);
 	}
 	
 	@PutMapping("{productId}")
-	public ProductsDTO updateProduct(@PathVariable("productId") String id, @RequestBody ProductsDTO product){
+	public ProductsDTO updateProduct(@PathVariable("productId") String id, @RequestBody ProductsDTO product, @AuthenticationPrincipal Token token){
 		if(!id.equals(product.getId())) {
 			return new ProductsDTO();
 		}
@@ -49,7 +49,7 @@ public class ProductsController {
 	}
 	
 	@DeleteMapping("{productId}")
-	public String deleteProduct(@PathVariable("productId") String id){
+	public String deleteProduct(@PathVariable("productId") String id, @AuthenticationPrincipal Token token){
 		return Boolean.toString(service.deleteProduct(id));
 	}
 }

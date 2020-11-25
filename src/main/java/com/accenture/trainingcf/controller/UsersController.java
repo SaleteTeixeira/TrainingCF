@@ -26,24 +26,23 @@ public class UsersController {
 	@Autowired
 	UsersService service;
 	
-	//
 	@GetMapping("")
-	public List<UsersDTO> findAll(@RequestParam(name="keyword", required=false) String keyword){
+	public List<UsersDTO> findAll(@RequestParam(name="keyword", required=false) String keyword, @AuthenticationPrincipal Token token){
 		return service.findAll(keyword);
 	}
 	
 	@GetMapping("{userId}")
-	public UsersDTO findById(@PathVariable("userId") String id){
+	public UsersDTO findById(@PathVariable("userId") String id, @AuthenticationPrincipal Token token){
 		return service.findById(id);
 	}
 	
 	@PostMapping(value = "")
-	public UsersDTO createUser(@RequestBody UsersDTO user){
+	public UsersDTO createUser(@RequestBody UsersDTO user, @AuthenticationPrincipal Token token){
 		return service.saveUser(user);
 	}
 	
 	@PutMapping("{userId}")
-	public UsersDTO updateUser(@PathVariable("userId") String id, @RequestBody UsersDTO user){
+	public UsersDTO updateUser(@PathVariable("userId") String id, @RequestBody UsersDTO user, @AuthenticationPrincipal Token token){
 		if(!id.equals(user.getId())) {
 			return new UsersDTO();
 		}
@@ -51,7 +50,7 @@ public class UsersController {
 	}
 	
 	@DeleteMapping("{userId}")
-	public String deleteUser(@PathVariable("userId") String id){
+	public String deleteUser(@PathVariable("userId") String id, @AuthenticationPrincipal Token token){
 		return Boolean.toString(service.deleteUser(id));
 	}
 }

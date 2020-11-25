@@ -128,9 +128,7 @@ public class SalesOrderControllerTest {
 
 		assertThat(objResult.getId()).isNotEmpty();
 		salesOrder.setId(objResult.getId());
-		salesOrder.getItems().stream().forEach(item -> {
-			item.setSalesOrderId(objResult.getId());
-		});
+		salesOrder.setItems(objResult.getItems());
 	}
 	
 	@Test

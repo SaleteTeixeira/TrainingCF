@@ -56,10 +56,8 @@ public class ClientsService {
 			clientE.setCreatedAt(LocalDateTime.now());
 			clientE.setCreatedBy("app");
 		}
-		else{
-			clientE.setModifiedAt(LocalDateTime.now());
-			clientE.setModifiedBy("app");
-		}
+		clientE.setModifiedAt(LocalDateTime.now());
+		clientE.setModifiedBy("app");
 		
 		ClientsEntity save = rep.save(clientE);
 		

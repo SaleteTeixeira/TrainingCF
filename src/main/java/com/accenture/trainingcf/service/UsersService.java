@@ -55,10 +55,8 @@ public class UsersService {
 			userE.setCreatedAt(LocalDateTime.now());
 			userE.setCreatedBy("app");
 		}
-		else{
-			userE.setModifiedAt(LocalDateTime.now());
-			userE.setModifiedBy("app");
-		}
+		userE.setModifiedAt(LocalDateTime.now());
+		userE.setModifiedBy("app");
 		
 		UsersEntity save = rep.save(userE);
 		return mapper.map(save, UsersDTO.class);

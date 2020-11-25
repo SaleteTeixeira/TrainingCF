@@ -60,10 +60,8 @@ public class ProductsService {
 			productE.setCreatedAt(LocalDateTime.now());
 			productE.setCreatedBy("app");
 		}
-		else{
-			productE.setModifiedAt(LocalDateTime.now());
-			productE.setModifiedBy("app");
-		}
+		productE.setModifiedAt(LocalDateTime.now());
+		productE.setModifiedBy("app");
 		
 		ProductsEntity save = rep.save(productE);
 		
