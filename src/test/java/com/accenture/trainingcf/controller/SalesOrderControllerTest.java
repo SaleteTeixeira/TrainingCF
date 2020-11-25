@@ -51,21 +51,30 @@ public class SalesOrderControllerTest {
 
 	private static void getSalesOrderTest() {
 		ClientsDTO clientsDTO = new ClientsDTO();
-		clientsDTO.setName("Client Test");
-		clientsDTO.setFamilyName("Family Test");
-		clientsDTO.setAge(100);
+		clientsDTO.setId("c1");
+		clientsDTO.setName("Maria");
+		clientsDTO.setFamilyName("Teixeira");
+		clientsDTO.setCreatedAt("2020-11-19T00:00");
+		clientsDTO.setCreatedBy("Salete");
+		clientsDTO.setAge(22);
 		
 		UsersDTO UsersDTO = new UsersDTO();
-		UsersDTO.setName("User Test");
+		UsersDTO.setId("u1");
+		UsersDTO.setName("Salete");
+		UsersDTO.setCreatedAt("2020-11-10T00:00");
+		UsersDTO.setCreatedBy("Salete");
 		
 		ProductsDTO productsTO = new ProductsDTO();
-		productsTO.setName("Product Test");
-		productsTO.setManufacturer("MAnufacturerTest");
-		productsTO.setBasePrice(1.15);
-		productsTO.setSalesPrice(2.2);
-		productsTO.setQuantity(2);
-		productsTO.setValidFrom("2020-11-22T00:00");
-		productsTO.setValidTo("2020-11-22T00:00");
+		productsTO.setId("p2");
+		productsTO.setName("Ice Cream");
+		productsTO.setManufacturer("Candy");
+		productsTO.setBasePrice(3.0);
+		productsTO.setSalesPrice(4.5);
+		productsTO.setQuantity(1);
+		productsTO.setValidFrom("2020-11-10T00:00");
+		productsTO.setValidTo("2020-11-12T00:00");
+		productsTO.setCreatedAt("2020-11-10T00:00");
+		productsTO.setCreatedBy("Salete");
 		
 		SalesOrderDTO SalesOrderDTO = new SalesOrderDTO();
 		SalesOrderDTO.setStatus("C");

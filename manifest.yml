@@ -1,0 +1,9 @@
+applications:
+- name: trainingcf
+  instances: 1
+  memory: 896M
+  routes:
+    - route: trainingcf-37781388trial-training-dev.cfapps.eu10.hana.ondemand.com
+  path: target/trainingcf-0.0.1-SNAPSHOT.jar
+  services:
+    - xsuaa-basic

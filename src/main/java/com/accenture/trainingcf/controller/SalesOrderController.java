@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accenture.trainingcf.dto.SalesOrderDTO;
 import com.accenture.trainingcf.service.SalesOrderService;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import com.sap.cloud.security.xsuaa.token.Token;
+
 @RestController
 @RequestMapping("/SalesOrder")
 public class SalesOrderController {
@@ -25,6 +28,7 @@ public class SalesOrderController {
 
 	@GetMapping("")
 	public List<SalesOrderDTO> findAll(@RequestParam(name="keyword", required=false) String keyword){
+		
 		return service.findAll(keyword);
 	}
 	

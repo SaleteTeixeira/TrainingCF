@@ -29,12 +29,12 @@ public class SalesOrderEntity {
 	private String status;
 	
 	@ManyToOne
-	@JoinColumn(name = "\"CLIENT_ID\"")
-	private ClientsEntity clientId;
+    @JoinColumn(name = "\"CLIENT_ID\"")
+    private ClientsEntity client;
 	
 	@ManyToOne
-	@JoinColumn(name = "\"USER_ID\"")
-	private UsersEntity userId;
+    @JoinColumn(name = "\"USER_ID\"")
+    private UsersEntity user;
 	
 	@OneToMany(mappedBy = "salesOrder", cascade = { CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
 	private List<SalesOrderItemEntity> items;
@@ -64,17 +64,17 @@ public class SalesOrderEntity {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public UsersEntity getUserId() {
-		return userId;
+	public UsersEntity getUser() {
+		return user;
 	}
-	public void setUserId(UsersEntity userId) {
-		this.userId = userId;
+	public void setUser(UsersEntity user) {
+		this.user = user;
 	}
-	public ClientsEntity getClientId() {
-		return clientId;
+	public ClientsEntity getClient() {
+		return client;
 	}
-	public void setClientId(ClientsEntity clientId) {
-		this.clientId = clientId;
+	public void setClient(ClientsEntity client) {
+		this.client = client;
 	}
 	public List<SalesOrderItemEntity> getItems(){
 		return items;

@@ -39,7 +39,7 @@ public class SalesOrderService {
         }
        
         return result.stream().map(item -> {
-            SalesOrderDTO salesOrder = mapper.map(item,  SalesOrderDTO.class);
+            SalesOrderDTO salesOrder = mapper.map(item, SalesOrderDTO.class);
             return salesOrder;
         }).collect(Collectors.toList());
     }
@@ -70,9 +70,13 @@ public class SalesOrderService {
 			salesOrderE.setModifiedBy("app");
 		}
 		
-		SalesOrderEntity savedEntity = repSO.save(salesOrderE);
-		salesOrderE.getItems().stream().forEach(item -> item.setSalesOrder(savedEntity));
-		repSOI.saveAll(salesOrderE.getItems());
+		SalesOrderEntity savedEntity = repSO.saveAndFlush(salesOrderE);
+		salesOrderE.getItems().stream().forEach(item -> {
+			item.setSalesOrder(savedEntity);
+			repSOI.save(item);
+			}
+		);
+		
 		
 		return mapper.map(savedEntity, SalesOrderDTO.class);
 	}
