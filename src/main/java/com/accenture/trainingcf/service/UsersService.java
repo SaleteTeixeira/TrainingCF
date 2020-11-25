@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.util.Strings;
-import org.hibernate.criterion.Example;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,16 +49,18 @@ public class UsersService {
 	}
 	
 	public UsersDTO saveUser(UsersDTO user){
+		UsersEntity userE = mapper.map(user, UsersEntity.class);
+		
 		if(Strings.isEmpty(user.getId())){
-			user.setCreatedAt(LocalDateTime.now().toString());
-			user.setCreatedBy("app");
+			userE.setCreatedAt(LocalDateTime.now());
+			userE.setCreatedBy("app");
 		}
 		else{
-			user.setModifiedAt(LocalDateTime.now().toString());
-			user.setModifiedBy("app");
+			userE.setModifiedAt(LocalDateTime.now());
+			userE.setModifiedBy("app");
 		}
-
-		UsersEntity save = rep.save(mapper.map(user, UsersEntity.class));
+		
+		UsersEntity save = rep.save(userE);
 		return mapper.map(save, UsersDTO.class);
 	}
 

@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.util.Strings;
-import org.hibernate.criterion.Example;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,16 +54,18 @@ public class ProductsService {
 	}
 	
 	public ProductsDTO saveProduct(ProductsDTO product){
+		ProductsEntity productE = mapper.map(product, ProductsEntity.class);
+		
 		if(Strings.isEmpty(product.getId())){
-			product.setCreatedAt(LocalDateTime.now().toString());
-			product.setCreatedBy("app");
+			productE.setCreatedAt(LocalDateTime.now());
+			productE.setCreatedBy("app");
 		}
 		else{
-			product.setModifiedAt(LocalDateTime.now().toString());
-			product.setModifiedBy("app");
+			productE.setModifiedAt(LocalDateTime.now());
+			productE.setModifiedBy("app");
 		}
 		
-		ProductsEntity save = rep.save(mapper.map(product, ProductsEntity.class));
+		ProductsEntity save = rep.save(productE);
 		
 		return mapper.map(save, ProductsDTO.class);
 	}
