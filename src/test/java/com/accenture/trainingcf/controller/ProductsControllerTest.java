@@ -52,8 +52,8 @@ public class ProductsControllerTest {
 		productsTO.setBasePrice(1.15);
 		productsTO.setSalesPrice(2.2);
 		productsTO.setQuantity(2);
-		productsTO.setValidFrom("2020-10-30");
-		productsTO.setValidTo("2020-11-30");
+		productsTO.setValidFrom("2020-10-30T00:00:00");
+		productsTO.setValidTo("2020-12-30T00:00:00");
 		product = productsTO;
 	}
 

@@ -27,7 +27,7 @@ public class SalesOrderController {
 	SalesOrderService service;
 
 	@GetMapping("")
-	public List<SalesOrderDTO> findAll(@RequestParam(name="keyword", required=false) String keyword, @AuthenticationPrincipal Token token){
+	public List<SalesOrderDTO> findAll(@RequestParam(name="keyword", required=false) String keyword){
 		
 		return service.findAll(keyword);
 	}
